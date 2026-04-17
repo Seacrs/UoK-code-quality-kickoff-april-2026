@@ -8,9 +8,19 @@
 export default function penaltyPoints(password = "") {
   // The following line ensures, that password is always a string, like the number 128 -> string "128"
   if (typeof password !== "string") password = String(password);
-
-  // * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-  // * * * INSERT YOUR CODE HERE * * * * * * * * * * * * * *
-  // * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-  //
+  // Award Sequence of characters penalty points
+  let seq = [];
+  let points = 0;
+  for(let i = 1; i <= password.length; i++){
+    if(password[i] === password[i-1]){
+      seq.push(password[i])
+    }
+    else{
+      if(seq.length === 1) points += 1;
+      if(seq.length >= 2) points += 2;
+      seq = [];
+      continue;
+    }
+  }
+  return points;
 }
