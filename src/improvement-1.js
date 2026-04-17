@@ -6,11 +6,5 @@
 
 // FUNCTION 1
 export default function cntRbt(ls) {
-  var cnt = 0;
-  for (var i = 0; i < ls.length; i++) {
-    if (ls[i] == "R") {
-      cnt++;
-    }
-  }
-  return cnt;
+  return [...ls].filter(char => char === "R").length
 }
